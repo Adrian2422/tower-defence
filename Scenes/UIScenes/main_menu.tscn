@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=3 uid="uid://cao77lp7applk"]
+
+[ext_resource type="Texture2D" uid="uid://b3pihfrklhsh1" path="res://Assets/UI/Art/background.png" id="1_r8v1s"]
+[ext_resource type="Texture2D" uid="uid://dyxfuo06wdgr" path="res://Assets/UI/Buttons/button_rectangle_depth_flat.png" id="2_6kpkr"]
+[ext_resource type="Texture2D" uid="uid://db8cimpfeqxnj" path="res://Assets/UI/Buttons/button_rectangle_flat.png" id="3_7k3aq"]
+[ext_resource type="FontFile" uid="uid://bhfq7se52hn6r" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="4_hq0vg"]
+
+[sub_resource type="FontVariation" id="FontVariation_iwqk3"]
+base_font = ExtResource("4_hq0vg")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r8v1s")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="NewGame" type="TextureButton" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_6kpkr")
+texture_pressed = ExtResource("3_7k3aq")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/NewGame"]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.235294)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_iwqk3")
+theme_override_font_sizes/font_size = 40
+text = "New game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_6kpkr")
+texture_pressed = ExtResource("3_7k3aq")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/Settings"]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.235294)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_iwqk3")
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="About" type="TextureButton" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_6kpkr")
+texture_pressed = ExtResource("3_7k3aq")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/About"]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.235294)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_iwqk3")
+theme_override_font_sizes/font_size = 40
+text = "About"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_6kpkr")
+texture_pressed = ExtResource("3_7k3aq")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/Quit"]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.235294)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_iwqk3")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1

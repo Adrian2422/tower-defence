@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://b2ck832pagtrd"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://b2ck832pagtrd"]
 
 [ext_resource type="Texture2D" uid="uid://b8timwkb5jfpq" path="res://Assets/Environment/Tilesets/terrainTiles_default.png" id="1_304nj"]
 [ext_resource type="Texture2D" uid="uid://cghd17fyuwvw7" path="res://Assets/Environment/Props/crateMetal.png" id="2_arqje"]
 [ext_resource type="Texture2D" uid="uid://u8xnmc8f63j4" path="res://Assets/Environment/Props/crateWood.png" id="3_5nfy8"]
 [ext_resource type="Texture2D" uid="uid://65313gij1pqe" path="res://Assets/Environment/Props/treeBrown_large.png" id="4_m1nhe"]
 [ext_resource type="Texture2D" uid="uid://bgc4l1n5i74wf" path="res://Assets/Environment/Props/treeGreen_large.png" id="5_2xyjy"]
+[ext_resource type="Texture2D" uid="uid://ig84vr3wvl5c" path="res://Assets/Environment/Tilesets/obstructed.png" id="6_30ewc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3y2p0"]
 texture = ExtResource("1_304nj")
@@ -247,6 +248,12 @@ texture = ExtResource("5_2xyjy")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4hos"]
+texture = ExtResource("6_30ewc")
+texture_region_size = Vector2i(64, 64)
+1:0/0 = 0
+1:0/0/terrain_set = 0
+
 [resource]
 tile_size = Vector2i(64, 64)
 terrain_set_0/mode = 0
@@ -261,3 +268,4 @@ sources/1 = SubResource("TileSetAtlasSource_kipw4")
 sources/2 = SubResource("TileSetAtlasSource_liybw")
 sources/3 = SubResource("TileSetAtlasSource_mrcv2")
 sources/4 = SubResource("TileSetAtlasSource_dmk47")
+sources/5 = SubResource("TileSetAtlasSource_e4hos")

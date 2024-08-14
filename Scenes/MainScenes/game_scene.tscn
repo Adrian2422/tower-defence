@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfmvmal5xly8u"]
+[gd_scene load_steps=10 format=3 uid="uid://bfmvmal5xly8u"]
 
 [ext_resource type="Script" path="res://Scenes/MainScenes/game_scene.gd" id="1_26pw2"]
 [ext_resource type="PackedScene" uid="uid://cgqk207erfqyy" path="res://Scenes/Maps/map_1.tscn" id="1_jfovj"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Scenes/MainScenes/UI.gd" id="3_jytb0"]
 [ext_resource type="Texture2D" uid="uid://6ij4cqehdv6c" path="res://Assets/UI/Towers/towerDefense_tile249.png" id="3_lrdm7"]
 [ext_resource type="Texture2D" uid="uid://dbovm1eq4omx6" path="res://Assets/UI/Towers/towerDefense_tile251.png" id="4_1o40u"]
+[ext_resource type="Texture2D" uid="uid://cf25tn5dymks4" path="res://Assets/Icons/forward.png" id="7_ldx3j"]
+[ext_resource type="Texture2D" uid="uid://b4nwuexmvl0hn" path="res://Assets/Icons/pause.png" id="8_k7mw3"]
+[ext_resource type="Texture2D" uid="uid://yhnvlpninkoc" path="res://Assets/Icons/fastForward.png" id="9_8pdjf"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_26pw2")
@@ -82,3 +85,40 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_1o40u")
 stretch_mode = 2
+
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -164.0
+offset_top = -90.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("7_ldx3j")
+texture_pressed = ExtResource("8_k7mw3")
+stretch_mode = 0
+
+[node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("9_8pdjf")
+stretch_mode = 0
+
+[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdh4h0ielcvis"]
+
+[ext_resource type="Texture2D" uid="uid://cxqho0g8f4s3u" path="res://Assets/Enemies/towerDefense_tile270.png" id="1_5bwee"]
+[ext_resource type="Texture2D" uid="uid://d4d8ej22lspkv" path="res://Assets/Enemies/towerDefense_tile293.png" id="1_ht6jv"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Flying/green_plane.gd" id="1_jvd5a"]
+[ext_resource type="Texture2D" uid="uid://2ykg55u5kghi" path="res://Assets/UI/HPbar.jpg" id="3_a1ajt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s13d"]
+size = Vector2(45, 57)
+
+[node name="GreenPlane" type="PathFollow2D"]
+script = ExtResource("1_jvd5a")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-4.5, -0.5)
+shape = SubResource("RectangleShape2D_3s13d")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(7, 9)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_ht6jv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -1)
+texture = ExtResource("1_5bwee")
+
+[node name="Healthbar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = -24.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_a1ajt")
+texture_progress = ExtResource("3_a1ajt")
+tint_under = Color(0.169245, 0.169245, 0.169245, 1)
+tint_progress = Color(0.19088, 0.751439, 0, 1)
+
+[node name="Impact" type="Marker2D" parent="."]

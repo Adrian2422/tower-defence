@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://q285544rbkrf"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Ground/blue_tank.gd" id="1_nh8f5"]
+[ext_resource type="Texture2D" uid="uid://cdywmqp2k4suh" path="res://Assets/Enemies/tank_blue.png" id="1_qiuob"]
+[ext_resource type="Texture2D" uid="uid://2ykg55u5kghi" path="res://Assets/UI/HPbar.jpg" id="3_qefwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddi8j"]
+size = Vector2(46.5, 42)
+
+[node name="BlueTank" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_nh8f5")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(-0.25, 0)
+shape = SubResource("RectangleShape2D_ddi8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qiuob")
+
+[node name="Healthbar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = -24.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_qefwe")
+texture_progress = ExtResource("3_qefwe")
+tint_under = Color(0.169245, 0.169245, 0.169245, 1)
+tint_progress = Color(0.19088, 0.751439, 0, 1)
+
+[node name="Impact" type="Marker2D" parent="."]
+position = Vector2(-15, -15)
+
+[node name="Destroy" type="Marker2D" parent="."]

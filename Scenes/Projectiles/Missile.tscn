@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://by23sfclsmo10"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/missile.gd" id="1_4p6gl"]
+[ext_resource type="Texture2D" uid="uid://dbovm1eq4omx6" path="res://Assets/UI/Towers/towerDefense_tile251.png" id="2_k8i6p"]
+[ext_resource type="Texture2D" uid="uid://bj120fyox630v" path="res://Assets/UI/Effects/towerDefense_tile298_2.png" id="3_fyc03"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w0ijt"]
+radius = 5.0
+height = 36.0
+
+[sub_resource type="Animation" id="Animation_wvko5"]
+resource_name = "Flare"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(2.54912, 0.210225, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6a3pd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15w5a"]
+_data = {
+"Flare": SubResource("Animation_wvko5"),
+"RESET": SubResource("Animation_6a3pd")
+}
+
+[node name="Missile" type="Area2D"]
+script = ExtResource("1_4p6gl")
+
+[node name="Projectile" type="Sprite2D" parent="." groups=["sprites"]]
+texture = ExtResource("2_k8i6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_w0ijt")
+
+[node name="Lifetime" type="Timer" parent="CollisionShape2D"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Thruster" type="Marker2D" parent="."]
+position = Vector2(-17, 0)
+
+[node name="Flare" type="Sprite2D" parent="Thruster" groups=["sprites"]]
+position = Vector2(-8, 0)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fyc03")
+
+[node name="Fuse" type="Marker2D" parent="."]
+position = Vector2(17, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Thruster")
+libraries = {
+"": SubResource("AnimationLibrary_15w5a")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="CollisionShape2D/Lifetime" to="." method="_on_lifetime_timeout"]

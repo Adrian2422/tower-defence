@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b50xhlf03cebc"]
 
-[ext_resource type="Script" path="res://Scenes/Turrets/GunT1.gd" id="1_hbq8q"]
+[ext_resource type="Script" path="res://Scenes/Turrets/gunT1.gd" id="1_hbq8q"]
 [ext_resource type="Texture2D" uid="uid://uu733d653n6n" path="res://Assets/UI/Towers/towerDefense_tile180.png" id="1_iweyn"]
 [ext_resource type="Texture2D" uid="uid://6ij4cqehdv6c" path="res://Assets/UI/Towers/towerDefense_tile249.png" id="2_5ytjp"]
 [ext_resource type="Texture2D" uid="uid://bvu6nva6ijk1d" path="res://Assets/UI/Effects/towerDefense_tile297.png" id="4_ok2dg"]

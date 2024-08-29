@@ -5,25 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3fa14fa-ecbb-4a93-a341-59fd7bfc451d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Enemies/Flying/green_plane.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/Flying/green_plane.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Enemies/Flying/green_plane.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/Flying/green_plane.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Enemies/Flying/plane.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/Flying/plane.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Enemies/Ground/blue_tank.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/Ground/blue_tank.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Enemies/Ground/blue_tank.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/Ground/blue_tank.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Enemies/Ground/red_tank.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/Ground/red_tank.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Enemies/Ground/red_tank.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/Ground/red_tank.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Enemies/enemy.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Enemies/enemy.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/MainScenes/UI.gd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/MainScenes/game_scene.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainScenes/game_scene.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/MainScenes/game_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainScenes/game_scene.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/GunT1.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/GunT1.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/GunT2.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/GunT2.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/MissileT1.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/MissileT1.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/MissileT2.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/MissileT2.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/MainScenes/ui.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainScenes/ui.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Maps/map_1.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Maps/map_1.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/gunT1.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Turrets/gunT1.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/gunT2.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Turrets/gunT2.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/missileT1.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Turrets/missileT1.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Turrets/missileT2.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Turrets/missileT2.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/Turrets/turret.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Turrets/turret.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Singletons/projectile_types.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Singletons/game_data.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Singletons/game_data.gd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +31,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2kyyYt3HNfGViZPdOXhxFO9FH6W" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,7 +44,7 @@
   "keyToString": {
     "GdScript Start and Debug.Player GDScript.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feat/hud-part-2",
+    "git-widget-placeholder": "feat/waves",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,6 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1724270162385</updated>
       <workItem from="1724270164280" duration="971000" />
+      <workItem from="1724336188312" duration="48000" />
     </task>
     <servers />
   </component>

@@ -3,6 +3,8 @@ extends Node2D
 signal game_finished()
 
 var map_node: Node2D
+var player_health = 100
+var player_money = 100
 
 var build_mode: bool  = false
 var build_valid: bool = false
@@ -13,7 +15,13 @@ var build_type: String
 var current_wave: int = 0
 var enemies_in_wave: int = 0
 
-var base_health = 100
+var enemy_scenes: Dictionary = {
+	"green_plane": preload("res://Scenes/Enemies/Flying/green_plane.tscn"),
+	"blue_tank": preload("res://Scenes/Enemies/Ground/blue_tank.tscn"),
+	"red_tank": preload("res://Scenes/Enemies/Ground/red_tank.tscn")
+}
+
+
 #region Lifecycle
 func _ready() -> void:
 	map_node = get_node("Map1")
@@ -34,34 +42,41 @@ func _unhandled_input(event) -> void:
 
 #region Waves
 func start_next_wave() -> void:
-	var wave_data: Array[Variant] = retrieve_wave_data()
+	var wave_data: Wave = retrieve_wave_data()
 	await get_tree().create_timer(0.2).timeout
 	spawn_enemies(wave_data)
 
 
-func retrieve_wave_data() -> Array[Variant]:
-	var wave_data: Array[Variant] = [["red_tank", 1.0], ["blue_tank", 1.0], ["red_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 5.0]]
-	#var wave_data: Array[Variant] = [["green_plane", 0]]
+func retrieve_wave_data() -> Wave:
 	current_wave += 1
-	enemies_in_wave = wave_data.size()
+	var wave_data: Wave = map_node.waves[current_wave]
+	enemies_in_wave = wave_data.amount
 	return wave_data
 
 
-func spawn_enemies(wave_data: Array[Variant]) -> void:
-	for i in wave_data:
-		var new_enemy: Node = load("res://Scenes/Enemies/Ground/" + i[0] + ".tscn").instantiate()
-		#var new_enemy: Node = load("res://Scenes/Enemies/Flying/" + i[0] + ".tscn").instantiate()
+func spawn_enemies(wave_data: Wave) -> void:
+	for i in range(0, wave_data.amount, 1):
+		randomize()
+		var path_number: int = randi_range(1,2)
+		var new_enemy: Node = enemy_scenes[wave_data.enemy_type].instantiate()
 		new_enemy.base_damage.connect(on_base_damage)
-		map_node.get_node("Path").add_child(new_enemy, true)
-		await get_tree().create_timer(i[1]).timeout
+		new_enemy.add_money.connect(on_enemy_destroy)
+		map_node.get_node("Path" + str(path_number)).add_child(new_enemy, true)
+		await get_tree().create_timer(wave_data.interval).timeout
 
 
 func on_base_damage(damage: int) -> void:
-	base_health -= damage
-	if base_health <= 0:
+	player_health -= damage
+	if player_health <= 0:
 		game_finished.emit()
 	else:
-		$UI.update_health_bar(base_health)
+		$UI.update_health_bar(player_health)
+
+
+func on_enemy_destroy(value: int) -> void:
+	player_money += value
+	$UI.update_money(player_money)
+
 #endregion
 
 #region Building

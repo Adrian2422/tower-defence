@@ -8,7 +8,7 @@ func _init() -> void:
 	range = 550
 	type = TurretData.TurretTypes.MISSILE
 	tier = 1
-	category = TurretData.ProjectileTypes.MISSILE
+	projectile_type = TurretData.ProjectileTypes.MISSILE
 
 
 func fire() -> void:
@@ -24,7 +24,7 @@ func fire() -> void:
 	is_ready = true
 
 func on_missile_hit(target: PathFollow2D) -> void:
-	target.on_hit(damage)
+	target.on_hit(damage, projectile_type)
 
 func reload() -> void:
 	match next_launch:

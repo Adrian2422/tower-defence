@@ -1,11 +1,10 @@
 class_name GreenPlane extends PlaneBase
 
-func _ready() -> void:
-	super._ready()
+func _init() -> void:
 	hp = 35
 	speed = 170
 	base_dmg = 15
-
+	value = 30
 
 func impact() -> void:
 	randomize()

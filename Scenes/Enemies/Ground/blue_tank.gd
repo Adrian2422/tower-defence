@@ -4,7 +4,7 @@ func _init() -> void:
 	hp = 50
 	speed = 150
 	base_dmg = 21
-
+	value = 35
 
 func impact() -> void:
 	randomize()
@@ -14,8 +14,3 @@ func impact() -> void:
 	var new_impact = projectile_impact.instantiate()
 	new_impact.position = impact_location
 	impact_area.add_child(new_impact)
-
-
-func destroy() -> void:
-	var new_explosion = explosion.instantiate()
-	destroy_area.add_child(new_explosion)

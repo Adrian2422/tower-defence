@@ -2,9 +2,12 @@ class_name Enemy
 extends PathFollow2D
 
 signal base_damage(damage: int)
+signal add_money(value: int)
+
 var hp: int       = 1
 var speed: int    = 1
 var base_dmg: int = 1
+var value: int = 1
 
 @onready var health_bar = $Healthbar
 @onready var impact_area = $Impact
@@ -33,9 +36,10 @@ func move(delta: float) -> void:
 	health_bar.position = position - Vector2(30, 30)
 
 
-func on_hit(damage: int) -> void:
+func on_hit(damage: int, projectile_type: TurretData.ProjectileTypes) -> void:
 	var initial_hp: int = hp
-	impact()
+	if projectile_type == TurretData.ProjectileTypes.BULLET:
+		impact()
 	hp -= damage
 	health_bar.value = hp
 	if hp < initial_hp:
@@ -50,11 +54,14 @@ func impact() -> void:
 
 
 func destroy() -> void:
-	push_error("Function is not implemented")
+	var new_explosion = explosion.instantiate()
+	destroy_area.add_child(new_explosion)
 
 
 func on_destroy() -> void:
 	destroy()
+	add_money.emit(value)
+	set_physics_process(false)
 	$CharacterBody2D.queue_free()
 	await get_tree().create_timer(0.2).timeout
 	self.queue_free()

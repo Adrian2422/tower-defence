@@ -92,40 +92,6 @@ grow_vertical = 2
 texture = ExtResource("4_1o40u")
 stretch_mode = 2
 
-[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -164.0
-offset_top = -90.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
-process_mode = 3
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = true
-texture_normal = ExtResource("7_ldx3j")
-texture_pressed = ExtResource("8_k7mw3")
-stretch_mode = 0
-
-[node name="FastForward" type="TextureButton" parent="UI/HUD/GameControls"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = true
-texture_normal = ExtResource("9_8pdjf")
-stretch_mode = 0
-
 [node name="InfoBar" type="ColorRect" parent="UI/HUD"]
 self_modulate = Color(0, 0, 0, 0.470588)
 custom_minimum_size = Vector2(0, 60)
@@ -134,17 +100,54 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="H" type="HBoxContainer" parent="UI/HUD/InfoBar"]
+[node name="Left" type="HBoxContainer" parent="UI/HUD/InfoBar"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -30.0
-offset_right = 234.0
-offset_bottom = 30.0
 grow_vertical = 2
 
-[node name="Symbol" type="Label" parent="UI/HUD/InfoBar/H"]
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD/InfoBar/Left"]
+layout_mode = 2
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/InfoBar/Left/GameControls"]
+process_mode = 3
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("7_ldx3j")
+texture_pressed = ExtResource("8_k7mw3")
+stretch_mode = 0
+
+[node name="FastForward" type="TextureButton" parent="UI/HUD/InfoBar/Left/GameControls"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("9_8pdjf")
+stretch_mode = 0
+
+[node name="Right" type="HBoxContainer" parent="UI/HUD/InfoBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -688.0
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Currency" type="HBoxContainer" parent="UI/HUD/InfoBar/Right"]
+layout_mode = 2
+
+[node name="Symbol" type="Label" parent="UI/HUD/InfoBar/Right/Currency"]
 custom_minimum_size = Vector2(120, 60)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -154,7 +157,7 @@ text = "$"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Currency" type="Label" parent="UI/HUD/InfoBar/H"]
+[node name="Amount" type="Label" parent="UI/HUD/InfoBar/Right/Currency"]
 custom_minimum_size = Vector2(110, 60)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -164,21 +167,11 @@ text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="H2" type="HBoxContainer" parent="UI/HUD/InfoBar"]
+[node name="Health" type="HBoxContainer" parent="UI/HUD/InfoBar/Right"]
 custom_minimum_size = Vector2(450, 0)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -15.0
-offset_bottom = 15.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
 
-[node name="HP" type="TextureProgressBar" parent="UI/HUD/InfoBar/H2"]
+[node name="Bar" type="TextureProgressBar" parent="UI/HUD/InfoBar/Right/Health"]
 custom_minimum_size = Vector2(400, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -189,5 +182,5 @@ texture_progress = ExtResource("11_ve3j1")
 tint_under = Color(0.215686, 0.215686, 0.215686, 1)
 tint_progress = Color(0.235294, 0.772549, 0.0627451, 1)
 
-[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
-[connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="UI/HUD/InfoBar/Left/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/InfoBar/Left/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]

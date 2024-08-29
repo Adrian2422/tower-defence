@@ -9,16 +9,20 @@
 size = Vector2(45, 57)
 
 [node name="GreenPlane" type="PathFollow2D"]
+loop = false
 script = ExtResource("1_jvd5a")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
 position = Vector2(-4.5, -0.5)
 shape = SubResource("RectangleShape2D_3s13d")
 
-[node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(7, 9)
+[node name="ShadowMarker" type="Marker2D" parent="."]
+position = Vector2(32, 32)
+
+[node name="Shadow" type="Sprite2D" parent="ShadowMarker"]
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_ht6jv")
 
@@ -40,3 +44,5 @@ tint_under = Color(0.169245, 0.169245, 0.169245, 1)
 tint_progress = Color(0.19088, 0.751439, 0, 1)
 
 [node name="Impact" type="Marker2D" parent="."]
+
+[node name="Destroy" type="Marker2D" parent="."]

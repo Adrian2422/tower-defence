@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-@onready var hp_bar = $HUD/InfoBar/H2/HP
+@onready var hp_bar = $HUD/InfoBar/Right/Health/Bar
+@onready var money_count = $HUD/InfoBar/Right/Currency/Amount
 
 func set_tower_preview(tower_type: String, mouse_position: Vector2) -> void:
 	var drag_tower: Node = load("res://Scenes/Turrets/" + tower_type + ".tscn").instantiate()
@@ -53,6 +54,9 @@ func _on_fast_forward_pressed() -> void:
 	else:
 		Engine.set_time_scale(2.0)
 
+
+func update_money(money: int) -> void:
+	money_count.text = str(money)
 
 func update_health_bar(base_health: int) -> void:
 	var hp_bar_tween = hp_bar.create_tween()

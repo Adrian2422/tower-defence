@@ -25,12 +25,19 @@ var enemy_scenes: Dictionary = {
 #region Lifecycle
 func _ready() -> void:
 	map_node = get_node("Map1")
+	create_wave_queue()
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
+
 
 func _process(_delta: float) -> void:
 	if build_mode:
 		update_tower_preview()
+
+
+func _physics_process(delta: float) -> void:
+	pass
+
 
 func _unhandled_input(event) -> void:
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -41,20 +48,9 @@ func _unhandled_input(event) -> void:
 #endregion
 
 #region Waves
-func start_next_wave() -> void:
-	var wave_data: Wave = retrieve_wave_data()
-	await get_tree().create_timer(0.2).timeout
-	spawn_enemies(wave_data)
-
-
-func retrieve_wave_data() -> Wave:
-	current_wave += 1
-	var wave_data: Wave = map_node.waves[current_wave]
-	enemies_in_wave = wave_data.amount
-	return wave_data
-
 
 func spawn_enemies(wave_data: Wave) -> void:
+	current_wave += 1
 	for i in range(0, wave_data.amount, 1):
 		randomize()
 		var path_number: int = randi_range(1,2)
@@ -65,17 +61,21 @@ func spawn_enemies(wave_data: Wave) -> void:
 		await get_tree().create_timer(wave_data.interval).timeout
 
 
-func on_base_damage(damage: int) -> void:
-	player_health -= damage
-	if player_health <= 0:
-		game_finished.emit()
-	else:
-		$UI.update_health_bar(player_health)
+func create_wave_queue() -> void:
+	var wave_path = $UI/HUD/WaveBar/WavePath
+	var path_length = wave_path.curve.get_baked_length() + 1
+	var waves: Array[Wave] = map_node.wavess
+	for i in waves.size():
+		var wave = waves[i]
+		var slab = load("res://Scenes/SupportScenes/wave_slab.tscn").instantiate()
+		slab.wave_data = wave
+		slab.start_wave.connect(spawn_enemies)
+		slab.get_node("Sprite2D/VBoxContainer/WaveNumber").text = str(i + 1)
+		slab.set_name("Wave" + str(i))
+		slab.progress = path_length - (i * 120)
+		wave_path.add_child(slab)
+		slab.add_to_group("wave_slabs")
 
-
-func on_enemy_destroy(value: int) -> void:
-	player_money += value
-	$UI.update_money(player_money)
 
 #endregion
 
@@ -115,3 +115,16 @@ func verify_and_build() -> void:
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cell(0, build_tile, 5, Vector2i(1, -0))
 #endregion
+
+
+func on_base_damage(damage: int) -> void:
+	player_health -= damage
+	if player_health <= 0:
+		game_finished.emit()
+	else:
+		$UI.update_health_bar(player_health)
+
+
+func on_enemy_destroy(value: int) -> void:
+	player_money += value
+	$UI.update_money(player_money)

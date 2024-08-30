@@ -3,6 +3,10 @@ extends CanvasLayer
 @onready var hp_bar = $HUD/InfoBar/Right/Health/Bar
 @onready var money_count = $HUD/InfoBar/Right/Currency/Amount
 
+func _ready() -> void:
+	get_tree().paused = true
+
+
 func set_tower_preview(tower_type: String, mouse_position: Vector2) -> void:
 	var drag_tower: Node = load("res://Scenes/Turrets/" + tower_type + ".tscn").instantiate()
 	drag_tower.is_rotation_locked = true
@@ -30,23 +34,18 @@ func update_tower_preview(new_position: Vector2, color: Color) -> void:
 		$TowerPreview/DragTower.modulate = Color(color)
 		$TowerPreview/RangeIndicator.modulate = Color(color)
 
-#
-# Game Control
-#
-
+#region Game Speed Control
 func _on_pause_play_pressed() -> void:
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
 	if get_tree().is_paused():
 		get_tree().paused = false
-	elif get_parent().current_wave == 0:
-		get_parent().current_wave += 1
-		get_parent().start_next_wave()
 	else:
 		get_tree().paused = true
 
 
 func _on_fast_forward_pressed() -> void:
+#endregion
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()
 	if Engine.get_time_scale() == 2.0:
@@ -54,6 +53,8 @@ func _on_fast_forward_pressed() -> void:
 	else:
 		Engine.set_time_scale(2.0)
 
+
+#region Indicators
 
 func update_money(money: int) -> void:
 	money_count.text = str(money)
@@ -67,3 +68,5 @@ func update_health_bar(base_health: int) -> void:
 		hp_bar.tint_progress = Color("e1be32") # Orange
 	else:
 		hp_bar.tint_progress = Color("e11e1e") # Red
+
+#endregion

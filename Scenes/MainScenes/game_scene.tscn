@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfmvmal5xly8u"]
+[gd_scene load_steps=13 format=3 uid="uid://bfmvmal5xly8u"]
 
 [ext_resource type="Script" path="res://Scenes/MainScenes/game_scene.gd" id="1_26pw2"]
 [ext_resource type="PackedScene" uid="uid://cgqk207erfqyy" path="res://Scenes/Maps/map_1.tscn" id="1_jfovj"]
@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://yhnvlpninkoc" path="res://Assets/Icons/fastForward.png" id="9_8pdjf"]
 [ext_resource type="FontVariation" uid="uid://bgmwpyn5y6mcc" path="res://Resources/Fonts/knf_40.tres" id="10_73suk"]
 [ext_resource type="Texture2D" uid="uid://2ykg55u5kghi" path="res://Assets/UI/HPbar.jpg" id="11_ve3j1"]
+
+[sub_resource type="Curve2D" id="Curve2D_dp33a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 30, 1112, 0, 0, 0, 0, 30, 0)
+}
+point_count = 2
 
 [node name="GameScene" type="Node2D"]
 process_mode = 3
@@ -37,8 +43,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_left = 60.0
+offset_top = -400.0
+offset_right = 160.0
 grow_vertical = 0
 theme_override_constants/separation = 25
 
@@ -93,7 +100,7 @@ texture = ExtResource("4_1o40u")
 stretch_mode = 2
 
 [node name="InfoBar" type="ColorRect" parent="UI/HUD"]
-self_modulate = Color(0, 0, 0, 0.470588)
+self_modulate = Color(0.393086, 0.393086, 0.393085, 1)
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 anchors_preset = 10
@@ -105,6 +112,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -30.0
+offset_right = 184.0
+offset_bottom = 30.0
 grow_vertical = 2
 
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD/InfoBar/Left"]
@@ -181,6 +192,18 @@ texture_under = ExtResource("11_ve3j1")
 texture_progress = ExtResource("11_ve3j1")
 tint_under = Color(0.215686, 0.215686, 0.215686, 1)
 tint_progress = Color(0.235294, 0.772549, 0.0627451, 1)
+
+[node name="WaveBar" type="ColorRect" parent="UI/HUD"]
+process_mode = 1
+self_modulate = Color(0.392157, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="WavePath" type="Path2D" parent="UI/HUD/WaveBar"]
+curve = SubResource("Curve2D_dp33a")
 
 [connection signal="pressed" from="UI/HUD/InfoBar/Left/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/InfoBar/Left/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]

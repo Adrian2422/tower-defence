@@ -70,7 +70,7 @@ func create_wave_queue() -> void:
 		var slab = load("res://Scenes/SupportScenes/wave_slab.tscn").instantiate()
 		slab.wave_data = wave
 		slab.start_wave.connect(spawn_enemies)
-		slab.get_node("Sprite2D/VBoxContainer/WaveNumber").text = str(i + 1)
+		slab.get_node("Button/VBoxContainer/WaveNumber").text = str(i + 1)
 		slab.set_name("Wave" + str(i))
 		slab.progress = path_length - (i * 120)
 		wave_path.add_child(slab)

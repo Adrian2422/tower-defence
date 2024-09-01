@@ -9,6 +9,7 @@ func _init() -> void:
 	type = TurretData.TurretTypes.MISSILE
 	tier = 1
 	projectile_type = TurretData.ProjectileTypes.MISSILE
+	cost = 100
 
 
 func fire() -> void:

@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	global_position += velocity * delta
 
 func _on_body_entered(body: Node) -> void:
-	if body == target.get_node("CharacterBody2D"):
+	if is_instance_valid(target) and body == target.get_node("CharacterBody2D"):
 		missile_hit.emit(target)
 		explode()
 

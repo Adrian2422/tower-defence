@@ -49,8 +49,10 @@ func _unhandled_input(event) -> void:
 
 #region Waves
 
-func spawn_enemies(wave_data: Wave) -> void:
+func spawn_enemies(wave_data: Wave, bonus_money: int = 0) -> void:
 	current_wave += 1
+	player_money += bonus_money
+	$UI.update_money(player_money)
 	for i in range(0, wave_data.amount, 1):
 		randomize()
 		var path_number: int = randi_range(1,2)
@@ -109,11 +111,14 @@ func cancel_build_mode() -> void:
 func verify_and_build() -> void:
 	if build_valid:
 		var new_tower: Node = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
-		new_tower.position = build_location
-		new_tower.built = true
-		new_tower.type = build_type
-		map_node.get_node("Turrets").add_child(new_tower, true)
-		map_node.get_node("TowerExclusion").set_cell(0, build_tile, 5, Vector2i(1, -0))
+		if player_money >= new_tower.cost:
+			new_tower.position = build_location
+			new_tower.built = true
+			new_tower.type = build_type
+			map_node.get_node("Turrets").add_child(new_tower, true)
+			map_node.get_node("TowerExclusion").set_cell(0, build_tile, 5, Vector2i(1, -0))
+			player_money -= new_tower.cost
+			$UI.update_money(player_money)
 #endregion
 
 

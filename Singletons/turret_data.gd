@@ -1,3 +1,6 @@
+extends Node
+
+
 enum ProjectileTypes {
 	BULLET,
 	MISSILE

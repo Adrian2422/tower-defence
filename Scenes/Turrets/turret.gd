@@ -8,10 +8,11 @@ var is_ready: bool = true
 
 var type: TurretData.TurretTypes
 var tier: int
-var category: TurretData.ProjectileTypes
+var projectile_type: TurretData.ProjectileTypes
 var damage: int
 var rate_of_fire: int
 var range: int
+var cost: int
 
 
 func _ready() -> void:

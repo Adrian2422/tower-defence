@@ -7,4 +7,5 @@ func _init() -> void:
 	range = 650
 	type = TurretData.TurretTypes.MISSILE
 	tier = 2
-	category = TurretData.ProjectileTypes.MISSILE
+	projectile_type = TurretData.ProjectileTypes.MISSILE
+	cost = 150

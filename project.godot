@@ -17,14 +17,18 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Globals="*res://Singletons/globals.gd"
 TurretData="*res://Singletons/turret_data.gd"
-GameData="res://Singletons/game_data.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 mouse_cursor/custom_image="res://Assets/UI/cursor_pointer3D.png"
+
+[dotnet]
+
+project/assembly_name="tower-defence"
 
 [editor]
 
